@@ -7,17 +7,14 @@ export default {
     theme: {
         extend: {
             colors: {
-                neon: {
-                    green: '#39ff14',
-                    blue: '#00f3ff',
-                },
-                dark: {
-                    bg: '#0a0a0a',
-                    surface: '#1a1a1a',
-                }
+                charcoal: '#0f0f11',
+                surface: '#1c1c1e',
+                volt: '#ccff00',
+                cyber: '#00f0ff',
+                'text-light': '#a1a1aa',
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
+                sans: ['Outfit', 'sans-serif'],
             }
         },
     },
