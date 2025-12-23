@@ -57,36 +57,72 @@ function App() {
 
 
                 {/* Navbar with Glassmorphism */}
-                <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-surface/80 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
-                    <div className="container mx-auto px-6 flex justify-between items-center">
-                        <div className="text-2xl font-bold tracking-tighter flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-full bg-volt flex items-center justify-center">
+                <div className={`fixed top-0 left-0 w-full z-50 flex justify-center transition-all duration-300 ${scrolled ? 'pt-4' : 'pt-6'}`}>
+                    <nav className={`
+                        relative flex items-center justify-between px-2 py-2 rounded-full transition-all duration-300
+                        ${scrolled
+                            ? 'w-[90%] md:w-[80%] bg-black/40 backdrop-blur-xl border border-white/10 shadow-[0_0_20px_rgba(204,255,0,0.1)]'
+                            : 'w-[95%] md:w-[85%] bg-transparent border border-transparent'}
+                    `}>
+                        {/* Logo */}
+                        <div className="pl-4 flex items-center gap-2">
+                            <div className={`w-8 h-8 rounded-full bg-volt flex items-center justify-center shadow-[0_0_10px_rgba(204,255,0,0.5)]`}>
                                 <Activity className="w-5 h-5 text-black" />
                             </div>
-                            <span>IRON<span className="text-volt">PULSE</span></span>
+                            <span className="text-xl font-bold tracking-tighter text-white">IRON<span className="text-volt">PULSE</span></span>
                         </div>
 
                         {/* Desktop Nav */}
-                        <div className="hidden md:flex items-center gap-8">
+                        <div className="hidden md:flex items-center gap-1 bg-black/20 rounded-full px-2 py-1 backdrop-blur-md border border-white/5">
                             {['Home', 'Workouts', 'Diet', 'Community'].map((item) => (
-                                <a key={item} href="#" className="text-sm font-medium text-text-light hover:text-white transition-colors">
+                                <a
+                                    key={item}
+                                    href="#"
+                                    className="relative px-4 py-2 text-sm font-medium text-text-light hover:text-white transition-colors group"
+                                >
                                     {item}
+                                    <span className="absolute bottom-1 left-1/2 w-0 h-[2px] bg-volt -translate-x-1/2 transition-all duration-300 group-hover:w-1/2 shadow-[0_0_8px_#ccff00]"></span>
                                 </a>
                             ))}
-                            <button className="bg-white/10 hover:bg-white/20 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all backdrop-blur-md border border-white/5">
+                        </div>
+
+                        {/* Right Actions */}
+                        <div className="hidden md:flex items-center gap-3 pr-2">
+                            <button className="text-white/80 hover:text-white px-4 py-2 text-sm font-semibold transition-all hover:bg-white/5 rounded-full border border-transparent hover:border-white/10">
                                 Sign In
                             </button>
-                            <button className="bg-volt hover:scale-105 text-black px-6 py-2 rounded-full text-sm font-bold transition-all shadow-[0_0_20px_rgba(204,255,0,0.3)]">
+                            <button className="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] border border-white/10">
                                 Join Now
                             </button>
                         </div>
 
                         {/* Mobile Menu Toggle */}
-                        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                        <button className="md:hidden text-white p-2 rounded-full hover:bg-white/10 mr-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                             {mobileMenuOpen ? <X /> : <Menu />}
                         </button>
+                    </nav>
+
+                    {/* Mobile Menu Dropdown */}
+                    <div className={`
+                        absolute top-full mt-2 w-[90%] bg-charcoal/90 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 origin-top
+                        ${mobileMenuOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible h-0'}
+                    `}>
+                        <div className="flex flex-col p-6 gap-4 items-center">
+                            {['Home', 'Workouts', 'Diet', 'Community'].map((item) => (
+                                <a key={item} href="#" className="text-lg font-medium text-white/80 hover:text-volt transition-colors">
+                                    {item}
+                                </a>
+                            ))}
+                            <div className="w-full h-px bg-white/10 my-2"></div>
+                            <button className="w-full text-white py-3 rounded-lg hover:bg-white/5 font-semibold">
+                                Sign In
+                            </button>
+                            <button className="w-full bg-gradient-to-r from-blue-600 to-violet-600 text-white py-3 rounded-lg font-bold shadow-lg">
+                                Join Now
+                            </button>
+                        </div>
                     </div>
-                </nav>
+                </div>
 
                 {/* Hero Section */}
                 <section className="relative pt-40 pb-20 px-6 min-h-[80vh] flex flex-col justify-center items-center text-center overflow-hidden">
