@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Activity, Dumbbell, Timer } from 'lucide-react';
-import bgImage from './assets/theme-bg.jpg';
+
 
 const exercises = [
     { id: 1, title: 'Push Ups', duration: '15 mins', calories: '120 kcal', level: 'Beginner' },
@@ -18,20 +18,41 @@ function App() {
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
+
+        // Unicorn Studio Script
+        if (!window.UnicornStudio) {
+            window.UnicornStudio = { isInitialized: false };
+            const script = document.createElement("script");
+            script.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.5.3/dist/unicornStudio.umd.js";
+            script.onload = () => {
+                if (window.UnicornStudio && window.UnicornStudio.init) {
+                    window.UnicornStudio.init();
+                    window.UnicornStudio.isInitialized = true;
+                }
+            };
+            document.body.appendChild(script);
+        } else if (!window.UnicornStudio.isInitialized && window.UnicornStudio.init) {
+            window.UnicornStudio.init();
+            window.UnicornStudio.isInitialized = true;
+        }
+
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-        <div
-            className="min-h-screen text-white font-sans selection:bg-volt selection:text-black overflow-x-hidden relative"
-            style={{
-                backgroundImage: `url(${bgImage})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundAttachment: 'fixed'
-            }}
-        >
-            <div className="absolute inset-0 bg-charcoal/80 z-0 pointer-events-none" />
+        <div className="min-h-screen text-white font-sans selection:bg-volt selection:text-black overflow-x-hidden relative">
+            <div
+                data-us-project="P62j6bBGPhoGxnjklkNv"
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    zIndex: 0
+                }}
+            />
+            <div className="absolute inset-0 bg-charcoal/80 z-0 pointer-events-none fixed" />
             <div className="relative z-10">
 
 
