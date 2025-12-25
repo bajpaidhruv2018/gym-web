@@ -142,7 +142,7 @@ function App() {
                         </span>
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight">
                             FORGE YOUR <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-volt to-cyber">ULTIMATE BODY</span>
+                            <span className="text-white">ULTIMATE BODY</span>
                         </h1>
                         <p className="text-lg md:text-xl text-text-light max-w-2xl mx-auto leading-relaxed">
                             Experience the future of fitness with AI-driven workouts, real-time analytics, and a community of elite athletes.
